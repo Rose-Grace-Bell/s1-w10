@@ -3,7 +3,10 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class SimpleClicker extends JPanel implements MouseListener {
-    
+    public int hp = 10;
+
+	private int xClick = -1000;
+	private int yClick = -1000;
     public SimpleClicker () {
         JFrame myFrame = new JFrame();      
         myFrame.setSize (300, 300);
@@ -12,15 +15,29 @@ public class SimpleClicker extends JPanel implements MouseListener {
                 
         addMouseListener (this);
     }
+
+	public void paintComponent(Graphics g){
+		g.setColor(Color.red);
+		if (xClick != -1000 && yClick != -1000)
+			g.drawOval(xClick, yClick, 20,20);
+	}
     
     public void mouseClicked (MouseEvent event) {
-		System.out.println ("You're tickling me!");
+		this.xClick = event.getX()-10;
+		this.yClick = event.getY()-10;
+		repaint();
 	}
 	
 	public void mouseReleased (MouseEvent event) {
+		this.xClick = event.getX()-10;
+		this.yClick = event.getY()-10;
+		repaint();
 	}
 	
 	public void mousePressed (MouseEvent event) {
+		this.xClick = event.getX()-10;
+		this.yClick = event.getY()-10;
+		repaint();
 	}
 	
 	public void mouseEntered (MouseEvent event) {
@@ -28,4 +45,8 @@ public class SimpleClicker extends JPanel implements MouseListener {
 	
 	public void mouseExited (MouseEvent event) {
 	}
+
+	 public static void main(String[] args) {
+        new SimpleClicker();
+    }
 }
