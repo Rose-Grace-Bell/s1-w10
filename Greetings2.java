@@ -17,9 +17,9 @@ public class Greetings2 extends JPanel {
    
    public void paintComponent (Graphics g) {
       this.newDrawLine(g,0,0,500,500);
-      this.newDrawRect(g,10,10,40,40);
-      this.newDrawRect(g,20,20,20,20);
-          this.newDrawRect(g,15,15,30,30);
+      for (int index = 0; index < 200; index = index + 5) {
+         this.newDrawRect(g,index,index,index,index);
+      }
    }
    
    public void newDrawLine(Graphics g,int x, int y, int x1, int y1){
