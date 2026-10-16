@@ -37,8 +37,17 @@ public class Greetings2 extends JPanel {
    // Step 26 This method takes top-left x, top-left y, bottom-right x, bottom-right y to define
    //  a rectangle.  It should take drawRect.
    public void newDrawRect2(Graphics g, int tlx, int tly, int brx, int bry) {
+      g.drawLine(tlx,tly,tlx,bry);
+      g.drawLine(tlx,tly,brx,tly);
+      g.drawLine(brx,tly,brx,bry);
+      g.drawLine(tlx,bry,brx,bry);
       
    }
 
-   
+   public void safeDrawRect(Graphics g, int tlx, int tly, int brx, int bry){
+      int maxX = this.getSize().width;
+      int maxY = this.getSize().height;
+      if (tlx >=0 && tly >=0 && tlx <= maxX && tly <= maxY)
+         this.newDrawRect2(g,tlx,tly,brx,bry);
+   }
 }
