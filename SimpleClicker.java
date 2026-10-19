@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class SimpleClicker extends JPanel implements MouseListener {
+public class SimpleClicker extends JPanel implements MouseListener, MouseMotionListener {
     public int hp = 10;
 
 	private int xClick = -1000;
@@ -14,7 +14,17 @@ public class SimpleClicker extends JPanel implements MouseListener {
         myFrame.setVisible (true);
                 
         addMouseListener (this);
+		addMouseMotionListener(this);
     }
+
+	public void mouseDragged(MouseEvent event){
+		this.xClick = event.getX()-10;
+		this.yClick = event.getY()-10;
+		repaint();
+	}
+
+	public void mouseMoved(MouseEvent event){
+	}
 
 	public void paintComponent(Graphics g){
 		g.setColor(Color.red);
