@@ -18,6 +18,8 @@ public class SimpleClicker extends JPanel implements MouseListener {
 
 	public void paintComponent(Graphics g){
 		g.setColor(Color.red);
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setStroke(new BasicStroke(5));
 		if (xClick != -1000 && yClick != -1000)
 			g.drawOval(xClick, yClick, 20,20);
 	}
